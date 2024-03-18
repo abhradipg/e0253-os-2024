@@ -62,7 +62,7 @@ static inline void do_evil(int *buff)
 	}
 }
 
-int run_testcase1()
+float run_testcase1()
 {
         int nr_calls = 0, run = 1, ret;
         int *buff;
@@ -89,10 +89,10 @@ int run_testcase1()
         do_good(buff, ACTION_VERIFY);
         free(buff);
     printf("testcase1 ran\n");
-	return nr_calls / timeout;
+	return (float)nr_calls / timeout;
 }
 
-int run_testcase2()
+float run_testcase2()
 {
         int nr_calls = 0, run = 1, ret;
         int *buff;
@@ -122,7 +122,7 @@ int run_testcase2()
         do_good(buff, ACTION_VERIFY);
         free(buff);
         printf("testcase2 ran\n");
-	return nr_calls / timeout;
+	return (float)nr_calls / timeout;
 }
 
 int run_testcase3()
