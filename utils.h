@@ -66,7 +66,6 @@ int run_testcase1()
 {
         int nr_calls = 0, run = 1, ret;
         int *buff;
-
         buff = malloc(sizeof(int) * num_elements);
         assert(buff != NULL);
         continue_work = &run;
@@ -77,6 +76,8 @@ int run_testcase1()
         do_good(buff, ACTION_INIT);
 
         while (*continue_work) {
+                /***** cleanup temp files *****/
+                cleanup();
                 nr_calls++;
                 /***** save context *****/
                 ret = savecontext();
@@ -106,6 +107,8 @@ int run_testcase2()
         do_good(buff, ACTION_INIT);
 
         while (*continue_work) {
+                 /***** cleanup temp files *****/
+                cleanup();
                 nr_calls++;
                 /***** save context *****/
                 ret = savecontext();
@@ -124,7 +127,6 @@ int run_testcase2()
 
 int run_testcase3()
 {
-        int nr_calls = 0, run = 1, ret;
         int *buff;
 
         buff =  mmap(0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, 0, 0);
@@ -133,24 +135,24 @@ int run_testcase3()
                return 0;
         }
         assert(buff != NULL);
-        continue_work = &run;
-
-        signal(SIGALRM, handle_timer);
-        alarm(timeout);
 
         do_good(buff, ACTION_INIT);
 
-        while (*continue_work) {
-                nr_calls++;
-                /***** save context *****/
-                ret = savecontext();
-		assert(ret == 0);
-                /* suspicious code */
-                do_evil(buff);
-                /***** recover context *****/
-                ret = recovercontext();
-		assert(ret == 0);
-        }
+        /***** cleanup temp files *****/
+        cleanup();
+        nr_calls++;
+
+        /***** save context *****/
+        ret = savecontext();
+	assert(ret == 0);
+
+        /* suspicious code */
+        do_evil(buff);
+
+        /***** recover context *****/
+        ret = recovercontext();
+	assert(ret == 0);
+
         do_good(buff, ACTION_VERIFY);
         munmap(buff, sizeof(int) * num_elements);
         printf("testcase3 ran\n")
