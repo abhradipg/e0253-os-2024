@@ -129,7 +129,7 @@ int run_testcase3()
 {
         int *buff,ret;
 
-        buff =  mmap(0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, 0, 0);
+        buff =  mmap((void *)0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, 0, 0);
         if (buff == MAP_FAILED){
                printf("failed unmap\n");
                return 0;

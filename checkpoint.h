@@ -22,7 +22,8 @@ int savecontext(){
     fclose(fptr);
     //once your checkpointing is complete, create a file "checkpoint_complete" to signal completion
      //wait until the file is created
-    while(!access("/tmp/checkpoint_complete",F_OK))sleep(0.001);
+    while(access("/tmp/checkpoint_complete",F_OK))
+        sleep(0.001);
     return 0;
 }
 
@@ -33,6 +34,7 @@ int recovercontext(){
 
     //once your checkpointing is complete, create a file "restore_complete" to signal completion
     //wait until the file is created
-    while(!access("/tmp/restore_complete",F_OK))sleep(0.001);
+    while(access("/tmp/restore_complete",F_OK))
+        sleep(0.001);
     return 0;
 }
