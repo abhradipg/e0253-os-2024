@@ -10,7 +10,7 @@ Content:
 There are following files. <br />
 ```
 testcase:     This runs the testcases and measures the latency.
-checkpoint:  Write the code for checkpointing, signal the eBPF to start checkpointing and recover.
+checkpoint:  code for checkpointing, signal the eBPF to start checkpointing and recover.
 utils:  Contains implementation of different testcases.
 ```
 

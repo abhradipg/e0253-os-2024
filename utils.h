@@ -88,7 +88,7 @@ int run_testcase1()
         }
         do_good(buff, ACTION_VERIFY);
         free(buff);
-    printf("testcase1 ran\n")
+    printf("testcase1 ran\n");
 	return nr_calls / timeout;
 }
 
@@ -121,7 +121,7 @@ int run_testcase2()
         }
         do_good(buff, ACTION_VERIFY);
         free(buff);
-        printf("testcase2 ran\n")
+        printf("testcase2 ran\n");
 	return nr_calls / timeout;
 }
 
@@ -140,7 +140,6 @@ int run_testcase3()
 
         /***** cleanup temp files *****/
         cleanup();
-        nr_calls++;
 
         /***** save context *****/
         ret = savecontext();
@@ -155,6 +154,6 @@ int run_testcase3()
 
         do_good(buff, ACTION_VERIFY);
         munmap(buff, sizeof(int) * num_elements);
-        printf("testcase3 ran\n")
+        printf("testcase3 ran\n");
 	return nr_calls / timeout;
 }
