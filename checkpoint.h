@@ -18,7 +18,7 @@ int cleanup(){
 }
 int savecontext(){
     //"ready_to_checkpoint" file creation should signal your ebpf script to start checkpointing
-    fptr = fopen("/tmp/ready_to_checkpoint", "w");
+    FILE* fptr = fopen("/tmp/ready_to_checkpoint", "w");
     fclose(fptr);
     //once your checkpointing is complete, create a file "checkpoint_complete" to signal completion
      //wait until the file is created
@@ -28,7 +28,7 @@ int savecontext(){
 
 int recovercontext(){
     //"ready_to_restore" file creation should signal your ebpf script to start restore
-    fptr = fopen("/tmp/ready_to_restore", "w");
+    FILE* fptr = fopen("/tmp/ready_to_restore", "w");
     fclose(fptr);
 
     //once your checkpointing is complete, create a file "restore_complete" to signal completion

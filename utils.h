@@ -127,7 +127,7 @@ int run_testcase2()
 
 int run_testcase3()
 {
-        int *buff;
+        int *buff,ret;
 
         buff =  mmap(0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, 0, 0);
         if (buff == MAP_FAILED){
@@ -155,5 +155,5 @@ int run_testcase3()
         do_good(buff, ACTION_VERIFY);
         munmap(buff, sizeof(int) * num_elements);
         printf("testcase3 ran\n");
-	return nr_calls / timeout;
+	return 0;
 }
