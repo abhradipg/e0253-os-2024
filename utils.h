@@ -59,7 +59,6 @@ static inline void do_evil(int *buff)
 
         for (i = 0; i < num_elements; i++) {
                 buff[i] = 0 - buff[i];
-		break;
 	}
 }
 
