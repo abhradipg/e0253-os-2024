@@ -11,7 +11,7 @@
 #define ACTION_VERIFY	1
 
 int num_elements = (1UL << 10);
-int timeout = 60;
+int timeout = 20;
 
 int *continue_work;
 
@@ -128,7 +128,7 @@ int run_testcase3()
         int nr_calls = 0, run = 1, ret;
         int *buff;
 
-        buff =  mmap(0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, NULL, 0);
+        buff =  mmap(0x7ff7ca71e000, sizeof(int) * num_elements, PROT_READ | PROT_WRITE ,MAP_ANONYMOUS, 0, 0);
            if (addr == MAP_FAILED)
                handle_error("mmap");;
         assert(buff != NULL);
