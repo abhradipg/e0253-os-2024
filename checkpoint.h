@@ -2,16 +2,16 @@
 #include <unistd.h>
 
 int cleanup(){
-    if(access("/tmp/ready_to_checkpoint")==0){
+    if(access("/tmp/ready_to_checkpoint",F_OK)==0){
         remove("/tmp/ready_to_checkpoint");
     }
-    if(access("/tmp/checkpoint_complete")==0){
+    if(access("/tmp/checkpoint_complete",F_OK)==0){
         remove("/tmp/checkpoint_complete");
     }
-    if(access("/tmp/ready_to_restore")==0){
+    if(access("/tmp/ready_to_restore",F_OK)==0){
         remove("/tmp/ready_to_restore");
     }
-    if(access("/tmp/restore_complete")==0){
+    if(access("/tmp/restore_complete",F_OK)==0){
         remove("/tmp/restore_complete");
     }    
     return 0;
