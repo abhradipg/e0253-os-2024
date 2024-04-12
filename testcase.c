@@ -9,5 +9,6 @@ int main(int argc, char *argv[])
     perf_testcase2 = run_testcase2();
 	printf("Testcase2 throughput:%f\n", perf_testcase2);
 	run_testcase3();
+	run_testcase4();
         return 0;
 }
