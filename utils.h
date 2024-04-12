@@ -12,7 +12,7 @@
 
 int num_elements = (1UL << 10);
 int timeout = 20;
-int array[100000000]
+int array[100000000];
 int *continue_work;
 
 void init_params(int argc, char *argv[])
